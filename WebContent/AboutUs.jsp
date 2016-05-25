@@ -326,7 +326,7 @@
         </div>
     </section>
 
-    <!-- jQuery -->
+    <!-- jQuery    latest -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
