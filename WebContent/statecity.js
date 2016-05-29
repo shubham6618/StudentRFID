@@ -11,11 +11,10 @@
        
  
  $("#stateid").change(function(){
-	 var element = $(this).find('option:selected'); 
-     var myTag = element.attr("myTag"); 
-
- 	$.getJSON("FetchAllCitiesByStateIdJSON",{sid:$('#stateid option:selected',this).attr('myid')}, function(json){
- 			console.log(sid);
+	// var myTag = $('#stateid').find(":selected").attr('myid');
+	var sid='';
+ 	$.getJSON("FetchAllCitiesByStateIdJSON",{sid:$('#stateid').find(":selected").attr('myid')}, function(json){
+ 			
          $('#cityid').empty();
          $('#cityid').append($('<option>').text("Select"));
          $.each(json, function(i, item){
