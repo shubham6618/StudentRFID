@@ -2,6 +2,7 @@ package com.insidecodes.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,19 +31,23 @@ public class CheckFacultyLogin extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		try{
 		PrintWriter out=response.getWriter();
 		String fid=request.getParameter("username");
 		String pwd=request.getParameter("password");
-		boolean st=LoginDAO.checkFacultyUsernamePassword(fid, pwd);
+		ResultSet rs=LoginDAO.checkFacultyUsernamePassword(fid, pwd);
 		//System.out.println(st);
-		if(st)
+		if(rs.next())
 	    { HttpSession ses=request.getSession();
-	    ses.putValue("SAID",request.getParameter("username"));
+	    ses.putValue("SFID",request.getParameter("username"));
 	    ses.putValue("LDATE", new java.util.Date());
-	    
+	    ses.putValue("SFNAME", rs.getString(2));
+	    ses.putValue("SFNAME", rs.getString(2));
+	    ses.putValue("SFBRANCH", rs.getString(8));
+	    ses.putValue("SFCONTACT", rs.getString(5));
 	    	
 	    	response.sendRedirect("FacultyHome");
 	    }
@@ -54,7 +59,11 @@ public class CheckFacultyLogin extends HttpServlet {
 	    	
 	    }
 		out.flush();
-
+		}catch(Exception e)
+		{
+			System.out.println("Unable to get Faculty data");
+			
+		}
 	}
 
 }

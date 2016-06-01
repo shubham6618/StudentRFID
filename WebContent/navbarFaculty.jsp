@@ -12,7 +12,12 @@
 <link rel="icon" href="/StudentRFID/favicon.ico">
 </head>
 <body>
-<% HttpSession ses=request.getSession();  try{  %>
+<% HttpSession ses=request.getSession();
+	
+	
+	
+
+	try{  %>
  <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,13 +28,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="FacultyHome">Faculty ID:<% out.println(ses.getValue("SAID").toString()); %></a>
+      <a class="navbar-brand" href="FacultyHome">Faculty ID:<% out.println(ses.getValue("SFID").toString()); %></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href=BroadcastMessage target=mw>Broadcast Message <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href=BroadcastMessage.jsp target=mw>Broadcast Message <span class="sr-only">(current)</span></a></li>
         <li><a href=SendSMS.api target=mw>Send SMS</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student <span class="caret"></span></a>

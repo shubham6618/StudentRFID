@@ -1,10 +1,8 @@
 package com.insidecodes.dao;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-
-import java.sql.Connection;
-
 
 import com.insidecodes.model.Student;
 
@@ -52,6 +50,22 @@ public static ResultSet DisplayById(String sid) {
 		 return null;
 	 }
 }
+public static ResultSet FetchParentStudentMobileNumerByBranch(String branch) {
+	try{
+		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
+		 Connection cn=DriverManager.getConnection(provider,"root","root");
+	  String query="select contactnofather,contactnostudent from student where branch='"+branch+"'";
+	  System.out.println(query);
+	  ResultSet rs=DBHelper.executeQuery(cn, query);
+	  return rs;
+		 
+		 
+	 }catch(Exception e)
+	 {System.out.println(e);
+		 return null;
+	 }
+}
+
 public static boolean DeleteById(String sid)
 { try{
 	 Class.forName("com.mysql.jdbc.Driver").newInstance();   

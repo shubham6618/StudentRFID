@@ -28,6 +28,7 @@ public class FacultyHome extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out=response.getWriter();
@@ -35,8 +36,8 @@ public class FacultyHome extends HttpServlet {
 	       out.println("<html>");
 	       out.println("<head>");
 	      // out.println("<script src=\"asset/bootstrap.min.js\"></script>");
-	       out.println("<script src=\"asset/jquery-2.2.1.min.js\"></script>");
-	       out.println("<link href=\"asset/bootstrap.min.css\" rel=\"stylesheet\"><link rel=\"shortcut icon\" href=\"/StudentRFID/favicon.ico\">");
+	   //    out.println("<script src=\"asset/jquery-2.2.1.min.js\"></script>");
+	       out.println("<link rel=\"shortcut icon\" href=\"/StudentRFID/favicon.ico\">");
 	       request.getRequestDispatcher("/navbarFaculty.jsp").include(request, response);
 		    
 			 try{
@@ -48,7 +49,7 @@ public class FacultyHome extends HttpServlet {
 			 out.println("<iframe frameborder=0 width=100% height=100% name=mw></iframe></td></tr>");
 			// out.println("</table>");
 			 }catch(Exception e){
-				 response.sendRedirect("AdminLogin");
+				 response.sendRedirect("FacultyLogin");
 				 
 			 }
 
@@ -57,6 +58,7 @@ public class FacultyHome extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
