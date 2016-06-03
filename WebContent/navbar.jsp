@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="/StudentRFID/AdminLogin">Admin Login</a></li>
                             <li class="divider"></li>
-                            <li><a href="/StudentRFID/Support.jsp">Contact us</a></li>
+                            <li><a href="/StudentRFID/ContactUs.jsp">Contact us</a></li>
                             
                             
                             

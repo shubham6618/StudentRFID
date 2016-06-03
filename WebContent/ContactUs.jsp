@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <script src="login.js"></script>
-<title>Support</title>
+<title>Contact Us</title>
  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                    <img src=pic/shreya.jpg class="w3-circle w3-image" >
+                
                     <p>+91-9479-809326</p>
                    
                 </div>

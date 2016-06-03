@@ -1,15 +1,19 @@
 package com.insidecodes.view;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.comm.*;
-import javax.swing.*;
+import java.util.Date;
+import java.util.Enumeration;
 
+import javax.comm.CommPortIdentifier;
+import javax.comm.SerialPort;
+import javax.comm.SerialPortEvent;
+import javax.comm.SerialPortEventListener;
 
 import com.insidecodes.SMSDAO;
 import com.insidecodes.SendSMS;
@@ -51,7 +55,8 @@ OutputStream outputStream;
         readThread.start();
     }
 
-    public void run() {
+    @Override
+	public void run() {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {System.out.println(e);}
@@ -59,7 +64,8 @@ OutputStream outputStream;
 
     }
 
-    public void serialEvent(SerialPortEvent event) {
+    @Override
+	public void serialEvent(SerialPortEvent event) {
         switch(event.getEventType()) {
         case SerialPortEvent.BI:
         case SerialPortEvent.OE:
@@ -87,6 +93,7 @@ OutputStream outputStream;
 
 						try{
 						//	Runtime.getRuntime().exec("cls");
+							   System.out.println("RFID -->> "+value+"\n");
 						 Class.forName("com.mysql.jdbc.Driver").newInstance();
 						 Connection cn=DriverManager.getConnection(provider,"root","root");
 					  Statement smt=cn.createStatement();
@@ -106,14 +113,16 @@ OutputStream outputStream;
 					      if(temp.next()){
 					    	  query="update smsdetails set timeout='"+time+"' where studentid='"+studentid+"' and transectiondate='"+transectiondate+"'";
 					    	  SendSMS.sendSMS("127.0.0.1", "8800", "apple", "apple", ph, name+" is out from collage @ "+date);
+					    	  System.out.println("SMS is Sent -->"+ph);
 					      }
 					      else
 					      {
 					    	  query="insert into smsdetails(transectiondate,studentid,timein) value('"+transectiondate+"','"+studentid+"','"+time+"')";
 					    	  SendSMS.sendSMS("127.0.0.1", "8800", "apple", "apple", ph, name+" is in collage @ "+date);
+					    	  System.out.println("SMS is Sent -->"+ph);
 					      }
 				       smt.executeUpdate(query);
-					   System.out.println("SMSDetails Updated....");
+					   
 					 //   SmsServlet T=new SmsServlet();
 					  //  T.SendSms("COM5",ph,"Amount 30/- Deducted from Ur Account "+value);
 					     
@@ -134,7 +143,7 @@ OutputStream outputStream;
 
                ////////////////////////
 
-                System.out.print("     "+value);
+             
 
             } catch (IOException e) {//System.out.println(e);
             }
