@@ -14,9 +14,7 @@ import javax.servlet.http.Part;
 import org.softech.FileUpload;
 
 import com.insidecodes.dao.FacultyDAO;
-import com.insidecodes.dao.StudentDAO;
 import com.insidecodes.model.Faculty;
-import com.insidecodes.model.Student;
 
 /**
  * Servlet implementation class FinalEditDeleteFaculty
@@ -39,6 +37,7 @@ public class FinalEditDeleteFaculty extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out=response.getWriter();
@@ -71,13 +70,16 @@ public class FinalEditDeleteFaculty extends HttpServlet {
 				else
 					{
 					Part part=request.getPart("photograph"); 
-				  String savepath="i:/StudentRFID/WebContent/facultypic";
+				  String savepath="c:/StudentRFID/WebContent/facultypic";
 				 FileUpload fu=new FileUpload(part,savepath);
 				 F.setPhotograph(fu.filename);
 					}
 				boolean st=FacultyDAO.EditById(F);
+				if (st) {
+					out.println("<html>Profile Updated.....</html>");
+				}
 			}
-			response.sendRedirect("DisplayAllFaculty");
+			
 	}catch(Exception e)
 		{
 			out.println(e);

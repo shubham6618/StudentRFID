@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,10 @@ import com.insidecodes.dao.FacultyDAO;
  * Servlet implementation class UpdateDeleteFaculty
  */
 @WebServlet("/UpdateDeleteFaculty")
+@MultipartConfig(fileSizeThreshold=1024*1024*5,//2MB
+maxFileSize=1024*1024*10,//10MB
+maxRequestSize=1024*1024*50)
+
 public class UpdateDeleteFaculty extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,6 +36,7 @@ public class UpdateDeleteFaculty extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out=response.getWriter();
@@ -42,9 +48,9 @@ public class UpdateDeleteFaculty extends HttpServlet {
 			if(rs.next())
 			{
 				 out.println("<html><form action=FinalEditDeleteFaculty method=post enctype=multipart/form-data>");
-			       out.println("<a href=DisplayAllFaculty>List of Faculties</a><br>");
+			     //  out.println("<a href=DisplayAllFaculty>List of Faculties</a><br>");
 			       out.println("<table cellpadding=15 cellspacing=15><tr><td>");
-			       out.println("<table><caption><h3>Faculty Register</h3></caption>");
+			       out.println("<table>");
 			       out.println("<tr><td><b><i>Faculty Id:</i></b></td><td><input type=text name=facultyid size=40 value="+rs.getString(1)+"></td></tr>");
 			       out.println("<tr><td><b><i>Name:</i></b></td><td><input type=text name=facultyname size=40 value=\'"+rs.getString(2)+"\'></td></tr>");
 			       out.println("<tr><td><b><i>Email</i></b></td><td><input type=text name=emailid size=40 value="+rs.getString(3)+"></td></tr>");
@@ -62,7 +68,7 @@ public class UpdateDeleteFaculty extends HttpServlet {
 			        
 			       out.println("<tr><td><input type=submit name=btn value=Edit>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=submit name=btn value=Delete></td></tr>");
 			       out.println("</table></td>");
-			       out.println("<th valign=middle><img src=facultypic/"+rs.getString(10)+" width=250 height=250><br><br><input type=file name=photograph></th></tr></table>");
+			       out.println("<th valign=middle><img src=\"facultypic/"+rs.getString(10)+"\" width=250 height=250><br><br><input type=file name=photograph></th></tr></table>");
 			       
 				
 				

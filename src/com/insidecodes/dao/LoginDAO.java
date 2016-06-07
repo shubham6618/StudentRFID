@@ -26,6 +26,18 @@ public class LoginDAO {
 			 return false;
 		 }
 	}
+	public static boolean EditById(String adminid,String password,String oldusername)
+    { try{
+    	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
+    	 Connection cn=DriverManager.getConnection(provider,"root","root");
+     String query="UPDATE adminlogin set username='"+adminid+"',password='"+password+"' where username='"+oldusername+"'";
+     System.out.println(query);
+       boolean st=DBHelper.executeUpdate(cn, query);
+       return st;
+    }catch(Exception e)
+    {
+    	 return false;
+    }}
 	public static ResultSet checkFacultyUsernamePassword(String fid,String pwd) {
 		try{
 			 Class.forName("com.mysql.jdbc.Driver").newInstance();   
