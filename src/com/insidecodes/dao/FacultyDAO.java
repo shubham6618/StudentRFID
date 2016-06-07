@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 import com.insidecodes.model.Faculty;
-import com.insidecodes.model.Student;
+
 
 
 public class FacultyDAO {
