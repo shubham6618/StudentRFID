@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.insidecodes.dao.StudentDAO;
 
 /**
@@ -31,6 +30,7 @@ public class UpdateDeleteStudent extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out=response.getWriter();
@@ -43,7 +43,7 @@ public class UpdateDeleteStudent extends HttpServlet {
 					out.println("<head><script src=asset/jquery-2.2.1.min.js></script>");
 					out.println("<script src=\"asset/bootstrap.js\"></script>");
 					out.println("<link href=\"asset/bootstrap.min.css\" rel=\"stylesheet\" ></head>");
-					out.println("<form action=FinalEditDeleteStudent>");
+					out.println("<form action=FinalEditDeleteStudent  method=post enctype=multipart/form-data>");
 			       out.println("<table cellpadding=15 cellspacing=15><tr><td>");
 			       out.println("<table><caption><h3>Student Register</h3></caption>");
 			       out.println("<tr><td><b><i>Student Id:</i></b></td><td><input type=text class=form-control name=studentid size=40 value="+rs.getString(1)+"></td></tr>");
