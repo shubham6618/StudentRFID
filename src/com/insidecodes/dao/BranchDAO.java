@@ -12,7 +12,7 @@ public class BranchDAO {
 	 { 	
 		try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select * from branch";
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
 	  

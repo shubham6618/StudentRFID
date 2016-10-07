@@ -9,7 +9,7 @@ public class LoginDAO {
 	public static boolean checkAdminUsernamePassword(String uid,String pwd) {
 		try{
 			 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-			 Connection cn=DriverManager.getConnection(provider,"root","root");
+			 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 		  String query="select * from adminlogin where username='"+uid+"'and password='"+pwd+"'";
 		  System.out.println(query);
 		  ResultSet rs=DBHelper.executeQuery(cn, query);
@@ -29,7 +29,7 @@ public class LoginDAO {
 	public static boolean EditById(String adminid,String password,String oldusername)
     { try{
     	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-    	 Connection cn=DriverManager.getConnection(provider,"root","root");
+    	 Connection cn=DriverManager.getConnection(provider,"root","12345678");
      String query="UPDATE adminlogin set username='"+adminid+"',password='"+password+"' where username='"+oldusername+"'";
      System.out.println(query);
        boolean st=DBHelper.executeUpdate(cn, query);
@@ -41,7 +41,7 @@ public class LoginDAO {
 	public static ResultSet checkFacultyUsernamePassword(String fid,String pwd) {
 		try{
 			 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-			 Connection cn=DriverManager.getConnection(provider,"root","root");
+			 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 		  String query="select * from faculty where facultyid='"+fid+"'and password='"+pwd+"'";
 		  System.out.println(query);
 		  ResultSet rs=DBHelper.executeQuery(cn, query);

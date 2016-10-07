@@ -10,7 +10,7 @@ public class StateCityDAO {
 	 { 	
 		try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select * from states";
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
 	  
@@ -26,7 +26,7 @@ public class StateCityDAO {
 	 { 	
 		try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select * from cities where stateid='"+sid+"'";
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
 	  

@@ -13,7 +13,7 @@ public class FacultyDAO {
 	 public static boolean AddNewRecord(Faculty F)
 	 { try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="INSERT INTO faculty values('"+F.getFacultyid()+"','"+F.getFacultyname()+"','"+F.getEmailid()+"','"+F.getContactno()+"','"+F.getMobileno()+"','"+F.getQualifictions()+"','"+F.getDesignation()+"','"+F.getBranch()+"','"+F.getPassword()+"','"+F.getPhotograph()+"')";
 	    boolean st=DBHelper.executeUpdate(cn, query);
 	    System.out.println(query);
@@ -27,7 +27,7 @@ public class FacultyDAO {
 	 {
 		 try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 		 String query="select * from faculty";
 		 ResultSet rs=DBHelper.executeQuery(cn, query);
 		 return rs;
@@ -46,7 +46,7 @@ public class FacultyDAO {
     {
     	try{
     		Class.forName("com.mysql.jdbc.Driver").newInstance();   
-   		 Connection cn=DriverManager.getConnection(provider,"root","root");
+   		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
    		 String query="select * from faculty where facultyid='"+fid+"'";
    		 ResultSet rs=DBHelper.executeQuery(cn, query);
    		 return rs;
@@ -61,7 +61,7 @@ public class FacultyDAO {
     public static boolean DeleteById(String fid)
     { try{
     	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-    	 Connection cn=DriverManager.getConnection(provider,"root","root");
+    	 Connection cn=DriverManager.getConnection(provider,"root","12345678");
      String query="DELETE FROM faculty where facultyid='"+fid+"'";
      System.out.println(query);
        boolean st=DBHelper.executeUpdate(cn, query);
@@ -77,7 +77,7 @@ public class FacultyDAO {
     public static boolean EditById(Faculty F)
     { try{
     	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-    	 Connection cn=DriverManager.getConnection(provider,"root","root");
+    	 Connection cn=DriverManager.getConnection(provider,"root","12345678");
      String query="UPDATE faculty set facultyid='"+F.getFacultyid()+"',facultyname='"+F.getFacultyname()+"',emailid='"+F.getEmailid()+"',contactno='"+F.getContactno()+"',mobileno='"+F.getMobileno()+"',qualification='"+F.getQualifictions()+"',designation='"+F.getDesignation()+"',branch='"+F.getBranch()+"',password='"+F.getPassword()+"',photograph='"+F.getPhotograph()+"' where facultyid='"+F.getFacultyid()+"'";
      System.out.println(query);
        boolean st=DBHelper.executeUpdate(cn, query);

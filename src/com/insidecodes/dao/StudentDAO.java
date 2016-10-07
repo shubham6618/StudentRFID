@@ -11,7 +11,7 @@ public class StudentDAO {
  public static boolean AddNewRecord(Student S)
  { try{
 	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-	 Connection cn=DriverManager.getConnection(provider,"root","root");
+	 Connection cn=DriverManager.getConnection(provider,"root","12345678");
   String query="INSERT INTO student values('"+S.getStudentid()+"','"+S.getStudentname()+"','"+S.getFathername()+"','"+S.getDob()+"','"+S.getAddress()+"','"+S.getState()+"','"+S.getCity()+"',"+S.getPhone()+",'"+S.getEmail()+"',"+S.getContactnofather()+","+S.getContactnostudent()+",'"+S.getCurrentaddress()+"','"+S.getBranch()+"','"+S.getSemester()+"','"+S.getPhotograph()+"')";
     boolean st=DBHelper.executeUpdate(cn, query);
     System.out.println(query);
@@ -25,7 +25,7 @@ public class StudentDAO {
  public static ResultSet DisplayAll()
  { try{
 	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-	 Connection cn=DriverManager.getConnection(provider,"root","root");
+	 Connection cn=DriverManager.getConnection(provider,"root","12345678");
   String query="select * from student";
   ResultSet rs=DBHelper.executeQuery(cn, query);
   return rs;
@@ -39,7 +39,7 @@ public class StudentDAO {
 public static ResultSet DisplayById(String sid) {
 	try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select * from student where studentid='"+sid+"'";
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
 	  return rs;
@@ -53,7 +53,7 @@ public static ResultSet DisplayById(String sid) {
 public static ResultSet FetchParentStudentMobileNumerByBranch(String branch) {
 	try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select contactnofather,contactnostudent from student where branch='"+branch+"'";
 	  System.out.println(query);
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
@@ -69,7 +69,7 @@ public static ResultSet FetchParentStudentMobileNumerByBranch(String branch) {
 public static boolean DeleteById(String sid)
 { try{
 	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-	 Connection cn=DriverManager.getConnection(provider,"root","root");
+	 Connection cn=DriverManager.getConnection(provider,"root","12345678");
  String query="DELETE FROM student where studentid='"+sid+"'";
  System.out.println(query);
    boolean st=DBHelper.executeUpdate(cn, query);
@@ -85,7 +85,7 @@ public static boolean DeleteById(String sid)
 public static boolean EditById(Student S)
 { try{
 	 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-	 Connection cn=DriverManager.getConnection(provider,"root","root");
+	 Connection cn=DriverManager.getConnection(provider,"root","12345678");
  String query="UPDATE student set studentid='"+S.getStudentid()+"',studentname='"+S.getStudentname()+"',fathername='"+S.getFathername()+"',dob='"+S.getDob()+"',address='"+S.getAddress()+"',state='"+S.getState()+"',city='"+S.getCity()+"',phone='"+S.getPhone()+"',email='"+S.getEmail()+"',contactnofather='"+S.getContactnofather()+"',contactnostudent='"+S.getContactnostudent()+"',currentaddress='"+S.getCurrentaddress()+"',branch='"+S.getBranch()+"',semester='"+S.getSemester()+"',photograph='"+S.getPhotograph()+"' where studentid='"+S.getStudentid()+"'";
  System.out.println(query);
    boolean st=DBHelper.executeUpdate(cn, query);
@@ -100,7 +100,7 @@ public static boolean EditById(Student S)
 public static String getMobileNo(String sid) {
 	try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select contactnostudent from student where studentid='"+sid+"'";
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
 	  String mob=null;
@@ -119,7 +119,7 @@ public static String getMobileNo(String sid) {
 public static ResultSet DisplayLogById(String sid) {
 	try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select * from smsdetails where studentid='"+sid+"'";
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
 	  return rs;
@@ -133,7 +133,7 @@ public static ResultSet DisplayLogById(String sid) {
 public static ResultSet DisplayAllStudentAttendence() {
 	try{
 		 Class.forName("com.mysql.jdbc.Driver").newInstance();   
-		 Connection cn=DriverManager.getConnection(provider,"root","root");
+		 Connection cn=DriverManager.getConnection(provider,"root","12345678");
 	  String query="select * from smsdetails";
 	  ResultSet rs=DBHelper.executeQuery(cn, query);
 	  return rs;
